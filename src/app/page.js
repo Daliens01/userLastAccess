@@ -8,7 +8,9 @@ export default function Home() {
     <React.StrictMode>
     <NextUIProvider>
       <Provider>
+        <React.Suspense>
       <HomePage/>
+      </React.Suspense>
       </Provider>
     </NextUIProvider>
     </React.StrictMode>
