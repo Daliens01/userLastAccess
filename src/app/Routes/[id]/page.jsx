@@ -19,7 +19,10 @@ try {
   const TodaysDate = `${fecha.getFullYear()}-${fecha.getMonth()+1 > 9?fecha.getMonth()+1:`0${fecha.getMonth()+1}`}-${fecha.getDate() > 9? fecha.getDate(): `0${fecha.getDate()}`}`;
     return (<div>
         <h1 style={{textAlign:"center"}}>Alumnos de {id} sin acceder a la fecha de {TodaysDate}</h1>
-        <Table aria-label="Example static collection table">
+        <Table isStriped 
+        color={"success"}
+        selectionMode="single" 
+        aria-label="Example static collection table">
       <TableHeader>
         <TableColumn>MATRICULA</TableColumn>
         <TableColumn>ALUMNO</TableColumn>
@@ -29,7 +32,7 @@ try {
       <TableBody emptyContent={"No hay alumnos sin acceder por mas de 9 días"}>
         {/* se consulta si la longitud de los datos son mayores a 0 para mandar el mensaje de arriba o si no, mandar los datos obtenidos */}
      {data.map(e=>e).length>0? data.map(e=>(
-        <TableRow key={e.MATRICULA}>
+        <TableRow key={e.MATRICULA} style={{cursor:"pointer"}}>
         <TableCell>{e.MATRICULA}</TableCell>
         <TableCell>{e.ALUMNO}</TableCell>
         <TableCell>{e.CURSOS}</TableCell>
@@ -40,7 +43,7 @@ try {
       </TableBody>
     </Table>
     <div>
-      {/* <ExcelLic data={data} name={id}/> */}
+      <ExcelLic data={data} name={id}/>
     </div>
     </div>)
 } catch (error) {
