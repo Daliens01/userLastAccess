@@ -17,6 +17,7 @@ try {
   const fecha = new Date()
   //busca la fecha actual para mostrarlo en pantalla
   const TodaysDate = `${fecha.getFullYear()}-${fecha.getMonth()+1 > 9?fecha.getMonth()+1:`0${fecha.getMonth()+1}`}-${fecha.getDate() > 9? fecha.getDate(): `0${fecha.getDate()}`}`;
+ 
     return (<div>
         <h1 style={{textAlign:"center"}}>Alumnos de {id} sin acceder a la fecha de {TodaysDate}</h1>
         <Table isStriped 
