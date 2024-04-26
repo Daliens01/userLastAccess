@@ -11,14 +11,16 @@ try {
   const router = useSearchParams();
   const id = router.get("id")
   //fetch para obtener los resultados de la api
-  const data = ApiHook(id)
+  const {data, count} = ApiHook(id)
   //hook para parar las recargas
   Reload()
   const fecha = new Date()
   //busca la fecha actual para mostrarlo en pantalla
   const TodaysDate = `${fecha.getFullYear()}-${fecha.getMonth()+1 > 9?fecha.getMonth()+1:`0${fecha.getMonth()+1}`}-${fecha.getDate() > 9? fecha.getDate(): `0${fecha.getDate()}`}`;
- 
-    return (<div>
+    if(count){
+     return( <h1 style={{textAlign:"center"}}>has excendido el limite de consultas</h1>)
+    }else{
+      return (<div>
         <h1 style={{textAlign:"center"}}>Alumnos de {id} sin acceder a la fecha de {TodaysDate}</h1>
         <Table isStriped 
         color={"success"}
@@ -47,6 +49,7 @@ try {
       <ExcelLic data={data} name={id}/>
     </div>
     </div>)
+    }
 } catch (error) {
   return(<p> pagina no encontrada. Error {error} </p>)
 }
