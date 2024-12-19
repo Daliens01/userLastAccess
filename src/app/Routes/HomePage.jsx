@@ -29,7 +29,7 @@ const HomePage = ()=>{
   
  return(<main className={styles.main}>
           <div className={styles.center}>
-            <Image src="http://online.esiapi.edu.mx/esi-template/img/logo1.PNG" alt="esiapi Logo" width={458} height={150}/>
+            <Image src="https://test.esiapi.edu.mx/img/logo1.png" alt="esiapi Logo" width={458} height={150}/>
           </div>
           <div className={styles.grid + styles.center}>
           <div className="flex flex-wrap gap-4 items-center" style={{alignItems:"center"}}>

@@ -1,6 +1,8 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import styles from "./page.module.css";
+import Link from "next/link";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -17,7 +19,7 @@ export default function RootLayout({ children }) {
     <div className={styles.description}>
     <p>Alumnos sin acceder a plataforma Esiapi </p>
     <div>
-    <a rel="noopener noreferrer" href="/">Inicio</a>
+    <Link rel="noopener noreferrer" href="/">Inicio</Link>
     </div>
     </div>
     </main>
