@@ -7,6 +7,7 @@ import { useRouter ,useSearchParams } from 'next/navigation';
 // import { Hilos } from '@/hooks/useHilos';
 const HomePage = ()=>{
   const [select, setSelect] = React.useState("")
+  
   // const [verificador, setVerificador] = React.useState("")
   // const count = Hilos(verificador)
   const router = useRouter()
@@ -29,7 +30,7 @@ const HomePage = ()=>{
   
  return(<main className={styles.main}>
           <div className={styles.center}>
-            <Image src="https://test.esiapi.edu.mx/img/logo1.png" alt="esiapi Logo" width={458} height={150}/>
+            <Image src={"esi.png"} alt="esiapi Logo" width={458} height={150}/>
           </div>
           <div className={styles.grid + styles.center}>
           <div className="flex flex-wrap gap-4 items-center" style={{alignItems:"center"}}>
@@ -40,7 +41,7 @@ const HomePage = ()=>{
               <SelectItem key={"licenciatura"}>LICENCIATURA</SelectItem>
               <SelectItem key={"posgrado"}>POSGRADO</SelectItem>
             </Select>
-            <Button  color="warning" onClick={()=>handleSubmit(select)} variant="solid">Ver tabla de {select} </Button>
+          {select?  <Button  color="warning" onClick={()=>handleSubmit(select)} variant="solid">Ver tabla de {select} </Button>:""}
           </div>
           </div>
         </main>)
