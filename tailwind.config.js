@@ -7,6 +7,7 @@ module.exports = {
     "./node_modules/@nextui-org/theme/dist/components/button.js",
     "./node_modules/@nextui-org/theme/dist/components/table.js",
     './node_modules/@nextui-org/theme/dist/components/(button|snippet|code|input).js',
+    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
