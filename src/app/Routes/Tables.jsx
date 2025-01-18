@@ -1,12 +1,59 @@
 "use client"
 import React from 'react'
-import {Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, Button, user} from "@nextui-org/react";
+import {Table, TableHeader, TableColumn, TableBody, TableRow, TableCell,getKeyValue, Button, user} from "@nextui-org/react";
 import ExcelLic from "@/Components/ExcelLic";
 // import { useSearchParams } from "next/navigation";
 import { ApiHook } from '@/hooks/useApi';
 import { Reload } from '@/hooks/useReload';
 
 const Tables = ({id}) =>{
+  const rows = [
+    {
+      key: "1",
+      name: "Tony Reichert",
+      role: "CEO",
+      status: "Active",
+    },
+    {
+      key: "2",
+      name: "Zoey Lang",
+      role: "Technical Lead",
+      status: "Paused",
+    },
+    {
+      key: "3",
+      name: "Jane Fisher",
+      role: "Senior Developer",
+      status: "Active",
+    },
+    {
+      key: "4",
+      name: "William Howard",
+      role: "Community Manager",
+      status: "Vacation",
+    },
+  ];
+  
+  const columns = [
+    {
+      key: "matricula",
+      label: "MATRICULA",
+    },
+    {
+      key: "alumno",
+      label: "ALUMNO",
+    },
+    {
+      key: "cursos",
+      label: "CURSOS",
+    },
+    {
+      key: "lastaccess",
+    label: "ÚLTIMO ACCESO",
+  
+    }
+  ];
+  
     try {
         //id de la ruta para especificar la ruta de la api
         // const router = useSearchParams();
@@ -23,9 +70,7 @@ const Tables = ({id}) =>{
           }else{
             return (<div>
               <h1 style={{textAlign:"center"}}>Alumnos de {id} sin acceder a la fecha de {TodaysDate}</h1>
-              <Table isStriped 
-              color={"success"}
-              selectionMode="single" 
+              <Table 
               aria-label="Example static collection table">
             <TableHeader>
               <TableColumn>MATRICULA</TableColumn>
@@ -34,9 +79,10 @@ const Tables = ({id}) =>{
               <TableColumn>ÚLTIMO ACCESO</TableColumn>
             </TableHeader>
             <TableBody emptyContent={"No hay alumnos sin acceder por mas de 9 días"}>
-              {/* se consulta si la longitud de los datos son mayores a 0 para mandar el mensaje de arriba o si no, mandar los datos obtenidos */}
+              {/* se consulta si la longitud de los datos son mayores a 0 
+              para mandar el mensaje de arriba o si no, mandar los datos obtenidos **/}
            {data.map(e=>e).length>0? data.map(e=>(
-              <TableRow key={e.MATRICULA} style={{cursor:"pointer"}}>
+              <TableRow key={e.MATRICULA} >
               <TableCell>{e.MATRICULA}</TableCell>
               <TableCell>{e.ALUMNO}</TableCell>
               <TableCell>{e.CURSOS}</TableCell>
@@ -45,7 +91,8 @@ const Tables = ({id}) =>{
             )):[]
            }
             </TableBody>
-          </Table>
+          </Table> 
+         
           <div>
             <ExcelLic data={data} name={id}/>
           </div>
